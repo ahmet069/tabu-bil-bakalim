@@ -52,6 +52,7 @@ class TabuModel extends Equatable {
       tabu2: tabu2,
       tabu3: tabu3,
       tabu4: tabu4,
+      tabu5: tabu5,
     );
   }
 }

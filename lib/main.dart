@@ -43,8 +43,3 @@ class MyApp extends StatelessWidget {
   }
 }
 //! my-app render side ****************************************************************
-
-// MediaQuery(
-//           child: child!,
-//           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-//         );

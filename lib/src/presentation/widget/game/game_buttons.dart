@@ -18,7 +18,7 @@ class GameButtonsState extends State<GameButtons> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        ButtonWidget(
+        _button(
           onPressed: () {
             context.read<GameBloc>().add(const TabuTabu());
           },
@@ -26,16 +26,16 @@ class GameButtonsState extends State<GameButtons> {
           buttonTitle: 'TABU',
           textColor: Colors.white,
         ),
-        ButtonWidget(
+        _button(
           onPressed: () {
             context.read<GameBloc>().add(const SkipTabu());
           },
           backgroundColor: AppColor.buttonYellow,
           buttonTitle: 'PAS',
         ),
-        ButtonWidget(
+        _button(
           onPressed: () {
-            context.read<GameBloc>().add(const SkipTabu());
+            context.read<GameBloc>().add(const TrueTabu());
           },
           backgroundColor: AppColor.buttonGreen,
           buttonTitle: 'DOĞRU',
@@ -44,7 +44,7 @@ class GameButtonsState extends State<GameButtons> {
     );
   }
 
-  Widget ButtonWidget({
+  Widget _button({
     required Function onPressed,
     required Color backgroundColor,
     Color textColor = Colors.black,
@@ -53,7 +53,7 @@ class GameButtonsState extends State<GameButtons> {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         return SizedBox(
-          width: .3333.sw,
+          width: 1.sw / 3,
           height: .10.sh,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(

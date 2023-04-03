@@ -33,12 +33,29 @@ class GameStarted extends GameState {
   final int ttrue;
   final int tabu;
   final int countIndex;
+  final int duration;
+  final String currentTeam;
   const GameStarted({
+    required this.duration,
     required this.tabuData,
     required this.skipCount,
     required this.ttrue,
     required this.tabu,
     required this.countIndex,
+    required this.currentTeam,
+  });
+  @override
+  List<Object> get props => [];
+}
+
+class GameFinished extends GameState {
+  final String currentTeam;
+  final int score1;
+  final int score2;
+  const GameFinished({
+    required this.currentTeam,
+    required this.score1,
+    required this.score2,
   });
   @override
   List<Object> get props => [];
@@ -60,4 +77,14 @@ class GameUpdateStatus extends GameState {
 
   @override
   List<Object> get props => [skipCount, tabuData, ttrue, tabu, countIndex];
+}
+
+class GamePaused extends GameState {
+  final int score1;
+
+  const GamePaused({
+    required this.score1,
+  });
+  @override
+  List<Object> get props => [];
 }

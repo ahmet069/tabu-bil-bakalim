@@ -9,7 +9,8 @@ abstract class GameEvent extends Equatable {
 
 //* oyunun başında yapılması gerekenler
 class StartGame extends GameEvent {
-  const StartGame();
+  final String currentTeam;
+  const StartGame({required this.currentTeam});
 }
 
 //* pas hakkını kullanır
@@ -27,9 +28,7 @@ class TabuTabu extends GameEvent {
   const TabuTabu();
 }
 
+//* oyun bitiminde yapılması gerekenler
 class GameFinish extends GameEvent {
-  final String currentTeam;
-  const GameFinish({
-    required this.currentTeam,
-  });
+  const GameFinish();
 }

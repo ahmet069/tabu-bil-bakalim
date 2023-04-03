@@ -17,4 +17,5 @@ class AppColor {
   static const Color buttonGreen = Color(0xff42CF00);
   static const Color tabuPrimaryBackground = Color(0xff000000);
   static const Color tabuSecondaryBackground = Color(0xffEEEEEE);
+  static const Color darkGray = Color(0xff2E3840);
 }

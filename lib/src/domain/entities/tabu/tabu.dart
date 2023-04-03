@@ -29,6 +29,7 @@ class Tabu extends Equatable {
         tabu2,
         tabu3,
         tabu4,
+        tabu5,
       ];
 
   @override

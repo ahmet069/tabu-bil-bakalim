@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../config/color/app_color.dart';
 import '../../bloc/game/game_bloc.dart';
@@ -18,7 +19,7 @@ class _TabuCardState extends State<TabuCard> {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
         if (state is GameInitial) {
-          return Container();
+          return const CircularProgressIndicator.adaptive();
         } else if (state is GameStarted) {
           final item = state.tabuData[state.countIndex];
           return Column(
@@ -49,7 +50,7 @@ class _TabuCardState extends State<TabuCard> {
             children: [
               _mainWord(item.word.toString()),
               Container(
-                width: .75.sw,
+                width: .85.sw,
                 decoration: const BoxDecoration(
                   color: AppColor.tabuSecondaryBackground,
                   borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -79,13 +80,16 @@ class _TabuCardState extends State<TabuCard> {
         color: Colors.black,
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
-      width: .75.sw,
-      height: 70,
+      width: .85.sw,
+      padding: const EdgeInsets.symmetric(vertical: 15),
       alignment: Alignment.center,
       child: Text(
         word,
-        style: const TextStyle(
-            color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+        style: GoogleFonts.heebo(
+          color: Colors.white,
+          fontSize: 35,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }

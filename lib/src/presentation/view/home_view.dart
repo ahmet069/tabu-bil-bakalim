@@ -60,7 +60,7 @@ class _HomeViewState extends State<HomeView> {
                       backgroundColor: AppColor.primaryButtonColor,
                       titleColor: AppColor.primaryButtonTextColor,
                       onPressed: () async {
-                        router.replace(const GameRouter());
+                        router.replace(GameRouter(team: 'team1'));
                       },
                     ),
                     //* how to play button

@@ -27,18 +27,26 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     GameRouter.name: (routeData) {
+      final args = routeData.argsAs<GameRouterArgs>();
       return CustomPage<dynamic>(
         routeData: routeData,
-        child: const GameView(),
+        child: GameView(
+          key: args.key,
+          team: args.team,
+        ),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
       );
     },
     ResultRoute.name: (routeData) {
+      final args = routeData.argsAs<ResultRouteArgs>();
       return CustomPage<dynamic>(
         routeData: routeData,
-        child: const ResultView(),
+        child: ResultView(
+          key: args.key,
+          team: args.team,
+        ),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -96,26 +104,70 @@ class HomeRouter extends PageRouteInfo<void> {
 
 /// generated route for
 /// [GameView]
-class GameRouter extends PageRouteInfo<void> {
-  const GameRouter()
-      : super(
+class GameRouter extends PageRouteInfo<GameRouterArgs> {
+  GameRouter({
+    Key? key,
+    required String team,
+  }) : super(
           GameRouter.name,
           path: '/GameView',
+          args: GameRouterArgs(
+            key: key,
+            team: team,
+          ),
         );
 
   static const String name = 'GameRouter';
 }
 
+class GameRouterArgs {
+  const GameRouterArgs({
+    this.key,
+    required this.team,
+  });
+
+  final Key? key;
+
+  final String team;
+
+  @override
+  String toString() {
+    return 'GameRouterArgs{key: $key, team: $team}';
+  }
+}
+
 /// generated route for
 /// [ResultView]
-class ResultRoute extends PageRouteInfo<void> {
-  const ResultRoute()
-      : super(
+class ResultRoute extends PageRouteInfo<ResultRouteArgs> {
+  ResultRoute({
+    Key? key,
+    required String team,
+  }) : super(
           ResultRoute.name,
           path: '/ResultView',
+          args: ResultRouteArgs(
+            key: key,
+            team: team,
+          ),
         );
 
   static const String name = 'ResultRoute';
+}
+
+class ResultRouteArgs {
+  const ResultRouteArgs({
+    this.key,
+    required this.team,
+  });
+
+  final Key? key;
+
+  final String team;
+
+  @override
+  String toString() {
+    return 'ResultRouteArgs{key: $key, team: $team}';
+  }
 }
 
 /// generated route for
