@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '../../../main.dart';
 import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
@@ -14,68 +16,91 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final int currentDuration = 60;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      body: SafeArea(
-        bottom: false,
-        child: Container(
-          color: Colors.white,
-          width: 1.sw,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: const [
-                  HomeImage(),
-                  Text(
-                    'BİL BAKALIM',
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                width: 1.sw,
-                height: .4.sh,
-                decoration: const BoxDecoration(
-                  color: AppColor.lightBlue,
-                  borderRadius: BorderRadiusDirectional.only(
-                    topEnd: Radius.circular(40),
-                    topStart: Radius.circular(40),
+    return WillPopScope(
+      onWillPop: null,
+      // TODO comlate here
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+        body: SafeArea(
+          bottom: false,
+          top: false,
+          child: Container(
+            color: Colors.white,
+            width: 1.sw,
+            height: 1.sh,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  height: .5.sh,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const HomeImage(),
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 20),
+                        child: Text(
+                          'BİL BAKALIM',
+                          style: GoogleFonts.luckiestGuy(
+                            fontSize: 60,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                child: Column(
-                  //* play button
-                  children: [
-                    const SizedBox(height: 30),
-                    MainButton(
-                      buttonTitle: 'OYNA',
-                      backgroundColor: AppColor.primaryButtonColor,
-                      titleColor: AppColor.primaryButtonTextColor,
-                      onPressed: () async {
-                        router.replace(GameRouter(team: 'team1'));
-                      },
+                Container(
+                  width: 1.sw,
+                  height: .3.sh,
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    color: AppColor.lightBlue,
+                    borderRadius: BorderRadiusDirectional.only(
+                      topEnd: Radius.circular(40),
+                      topStart: Radius.circular(40),
                     ),
-                    //* how to play button
-                    MainButton(
-                      buttonTitle: 'NASIL OYNANIR ?',
-                      backgroundColor: AppColor.primaryButtonColor,
-                      titleColor: AppColor.primaryButtonTextColor,
-                      onPressed: () async {
-                        await router.push(const HowToPlayRoute());
-                      },
-                    ),
-                  ],
+                  ),
+                  child: Column(
+                    //* play button
+                    children: [
+                      const SizedBox(height: 30),
+                      Column(
+                        children: [
+                          MainButton(
+                            buttonTitle: 'OYNA',
+                            backgroundColor: AppColor.primaryButtonColor,
+                            titleColor: AppColor.primaryButtonTextColor,
+                            onPressed: () async {
+                              router.replace(GameRouter(
+                                team: 'team1',
+                                newDuration: currentDuration,
+                              ));
+                            },
+                          ),
+                          //* how to play button
+                          MainButton(
+                            buttonTitle: 'NASIL OYNANIR ?',
+                            backgroundColor: AppColor.primaryButtonColor,
+                            titleColor: AppColor.primaryButtonTextColor,
+                            onPressed: () async {
+                              await router.push(const HowToPlayRoute());
+                            },
+                          ),
+                        ],
+                      ),
+                      // const SetDuration(),
+                      const Text('Designed by Ahmet Subaşı'),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

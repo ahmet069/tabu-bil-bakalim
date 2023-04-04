@@ -33,6 +33,7 @@ class _$AppRouter extends RootStackRouter {
         child: GameView(
           key: args.key,
           team: args.team,
+          newDuration: args.newDuration,
         ),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
@@ -108,12 +109,14 @@ class GameRouter extends PageRouteInfo<GameRouterArgs> {
   GameRouter({
     Key? key,
     required String team,
+    required int newDuration,
   }) : super(
           GameRouter.name,
           path: '/GameView',
           args: GameRouterArgs(
             key: key,
             team: team,
+            newDuration: newDuration,
           ),
         );
 
@@ -124,15 +127,18 @@ class GameRouterArgs {
   const GameRouterArgs({
     this.key,
     required this.team,
+    required this.newDuration,
   });
 
   final Key? key;
 
   final String team;
 
+  final int newDuration;
+
   @override
   String toString() {
-    return 'GameRouterArgs{key: $key, team: $team}';
+    return 'GameRouterArgs{key: $key, team: $team, newDuration: $newDuration}';
   }
 }
 

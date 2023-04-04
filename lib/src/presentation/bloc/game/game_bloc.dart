@@ -12,13 +12,14 @@ part 'game_state.dart';
 class GameBloc extends Bloc<GameEvent, GameState> {
   final TabuUsecase _usecase;
   final _seed = Random.secure();
+  late int duration;
   late int skipCount;
   late int ttrue;
   late int tabu;
   late int countIndex;
-  late int duration;
   late int score1 = 0;
   late int score2 = 0;
+
   late String currentTeam;
   var tabuData = <Tabu>[];
 
@@ -31,7 +32,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         tabu = 0;
         countIndex = 0;
         ttrue = 0;
-        duration = 60;
+        duration = event.newDuration;
         currentTeam = event.currentTeam;
         emit(
           GameStarted(
@@ -55,6 +56,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       }
       emit(
         GameUpdateStatus(
+            duration: duration,
             skipCount: skipCount,
             tabuData: tabuData,
             ttrue: ttrue,
@@ -68,6 +70,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
       emit(
         GameUpdateStatus(
+          duration: duration,
           skipCount: skipCount,
           tabuData: tabuData,
           ttrue: ttrue,
@@ -82,6 +85,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
       emit(
         GameUpdateStatus(
+          duration: duration,
           skipCount: skipCount,
           tabuData: tabuData,
           ttrue: ttrue,
@@ -109,5 +113,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         print(e);
       }
     });
+    on<ChangeDuration>((event, emit) => {
+          duration = event.newDuration,
+        });
   }
 }

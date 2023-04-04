@@ -10,7 +10,11 @@ abstract class GameEvent extends Equatable {
 //* oyunun başında yapılması gerekenler
 class StartGame extends GameEvent {
   final String currentTeam;
-  const StartGame({required this.currentTeam});
+  final int newDuration;
+  const StartGame({
+    required this.currentTeam,
+    required this.newDuration,
+  });
 }
 
 //* pas hakkını kullanır
@@ -31,4 +35,9 @@ class TabuTabu extends GameEvent {
 //* oyun bitiminde yapılması gerekenler
 class GameFinish extends GameEvent {
   const GameFinish();
+}
+
+class ChangeDuration extends GameEvent {
+  final int newDuration;
+  const ChangeDuration({required this.newDuration});
 }

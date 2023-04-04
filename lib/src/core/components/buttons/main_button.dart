@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton({
@@ -33,11 +34,12 @@ class MainButton extends StatelessWidget {
         },
         child: Text(
           buttonTitle,
-          style: TextStyle(
-            color: titleColor,
-            fontSize: 20,
-            fontWeight: FontWeight.w800,
-          ),
+          textAlign: TextAlign.center,
+          style: GoogleFonts.luckiestGuy(
+              color: titleColor,
+              fontSize: 28,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 2),
         ),
       ),
     );

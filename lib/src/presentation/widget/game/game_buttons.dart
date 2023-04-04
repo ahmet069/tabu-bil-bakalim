@@ -16,31 +16,100 @@ class GameButtons extends StatefulWidget {
 class GameButtonsState extends State<GameButtons> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        _button(
-          onPressed: () {
-            context.read<GameBloc>().add(const TabuTabu());
-          },
-          backgroundColor: AppColor.buttonRed,
-          buttonTitle: 'TABU',
-          textColor: Colors.white,
-        ),
-        _button(
-          onPressed: () {
-            context.read<GameBloc>().add(const SkipTabu());
-          },
-          backgroundColor: AppColor.buttonYellow,
-          buttonTitle: 'PAS',
-        ),
-        _button(
-          onPressed: () {
-            context.read<GameBloc>().add(const TrueTabu());
-          },
-          backgroundColor: AppColor.buttonGreen,
-          buttonTitle: 'DOĞRU',
-        ),
-      ],
+    return BlocBuilder<GameBloc, GameState>(
+      builder: (context, state) {
+        if (state is GameStarted) {
+          return Row(
+            children: [
+              _button(
+                onPressed: () {
+                  context.read<GameBloc>().add(const TabuTabu());
+                },
+                backgroundColor: AppColor.buttonRed,
+                buttonTitle: 'TABU',
+                textColor: Colors.white,
+                value: state.tabu,
+              ),
+              _button(
+                onPressed: () {
+                  context.read<GameBloc>().add(const SkipTabu());
+                },
+                backgroundColor: AppColor.buttonYellow,
+                buttonTitle: 'PAS',
+                value: state.skipCount,
+              ),
+              _button(
+                onPressed: () {
+                  context.read<GameBloc>().add(const TrueTabu());
+                },
+                backgroundColor: AppColor.buttonGreen,
+                buttonTitle: 'DOĞRU',
+                value: state.ttrue,
+              ),
+            ],
+          );
+        }
+        if (state is GameUpdateStatus) {
+          return Row(
+            children: [
+              _button(
+                onPressed: () {
+                  context.read<GameBloc>().add(const TabuTabu());
+                },
+                backgroundColor: AppColor.buttonRed,
+                buttonTitle: 'TABU',
+                textColor: Colors.white,
+                value: state.tabu,
+              ),
+              _button(
+                onPressed: () {
+                  context.read<GameBloc>().add(const SkipTabu());
+                },
+                backgroundColor: AppColor.buttonYellow,
+                buttonTitle: 'PAS',
+                value: state.skipCount,
+              ),
+              _button(
+                onPressed: () {
+                  context.read<GameBloc>().add(const TrueTabu());
+                },
+                backgroundColor: AppColor.buttonGreen,
+                buttonTitle: 'DOĞRU',
+                value: state.ttrue,
+              ),
+            ],
+          );
+        }
+        return Row(
+          children: [
+            _button(
+              onPressed: () {
+                context.read<GameBloc>().add(const TabuTabu());
+              },
+              backgroundColor: AppColor.buttonRed,
+              buttonTitle: 'TABU',
+              textColor: Colors.white,
+              value: 2,
+            ),
+            _button(
+              onPressed: () {
+                context.read<GameBloc>().add(const SkipTabu());
+              },
+              backgroundColor: AppColor.buttonYellow,
+              buttonTitle: 'PAS',
+              value: 0,
+            ),
+            _button(
+              onPressed: () {
+                context.read<GameBloc>().add(const TrueTabu());
+              },
+              backgroundColor: AppColor.buttonGreen,
+              buttonTitle: 'DOĞRU',
+              value: 2,
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -49,32 +118,57 @@ class GameButtonsState extends State<GameButtons> {
     required Color backgroundColor,
     Color textColor = Colors.black,
     required String buttonTitle,
+    required int value,
   }) {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
-        return SizedBox(
-          width: 1.sw / 3,
-          height: .10.sh,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              elevation: 0,
-              backgroundColor: backgroundColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0),
+        return Stack(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 20),
+              width: 1.sw / 3,
+              height: .10.sh,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  backgroundColor: backgroundColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                ),
+                child: Text(
+                  buttonTitle,
+                  style: TextStyle(
+                    color: textColor,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () {
+                  onPressed();
+                },
               ),
             ),
-            child: Text(
-              buttonTitle,
-              style: TextStyle(
-                color: textColor,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+            Positioned(
+              left: (1.sw / 3 - 40) / 2,
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                    color: backgroundColor,
+                    borderRadius: BorderRadius.circular(20)),
+                alignment: Alignment.center,
+                child: Text(
+                  value.toString(),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: textColor,
+                  ),
+                ),
               ),
-            ),
-            onPressed: () {
-              onPressed();
-            },
-          ),
+            )
+          ],
         );
       },
     );

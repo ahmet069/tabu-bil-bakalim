@@ -67,12 +67,14 @@ class GameUpdateStatus extends GameState {
   final int ttrue;
   final int tabu;
   final int countIndex;
+  final int duration;
   const GameUpdateStatus({
     required this.skipCount,
     required this.tabuData,
     required this.ttrue,
     required this.tabu,
     required this.countIndex,
+    required this.duration,
   });
 
   @override

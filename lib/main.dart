@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
         designSize: const Size(360, 800),
         minTextAdapt: true,
         builder: (context, _) {
+          SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+              overlays: []);
+
           return MaterialApp.router(
             routerDelegate: router.delegate(),
             routeInformationParser: router.defaultRouteParser(),

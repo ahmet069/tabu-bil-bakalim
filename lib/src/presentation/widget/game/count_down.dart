@@ -25,25 +25,28 @@ class _CountDownState extends State<CountDown> {
 
   @override
   Widget build(BuildContext context) {
-    return TimerCountdown(
-      format: CountDownTimerFormat.secondsOnly,
-      timeTextStyle: GoogleFonts.luckiestGuy(
-        fontSize: 34,
-      ),
-      descriptionTextStyle: const TextStyle(
-        fontSize: 0,
-      ),
-      endTime: DateTime.now().add(
-        const Duration(
-          //* duration *//
-          seconds: 76,
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: TimerCountdown(
+        format: CountDownTimerFormat.secondsOnly,
+        timeTextStyle: GoogleFonts.luckiestGuy(
+          fontSize: 34,
         ),
+        descriptionTextStyle: const TextStyle(
+          fontSize: 0,
+        ),
+        endTime: DateTime.now().add(
+          const Duration(
+            //* duration *//
+            seconds: 76,
+          ),
+        ),
+        onEnd: () async {
+          await router.replace(ResultRoute(
+            team: widget.team,
+          ));
+        },
       ),
-      onEnd: () async {
-        await router.replace(ResultRoute(
-          team: widget.team,
-        ));
-      },
     );
   }
 }

@@ -63,7 +63,7 @@ class _ResultViewState extends State<ResultView> {
             state.score1.toString(),
             style: GoogleFonts.luckiestGuy(
               color: AppColor.primaryButtonColor,
-              fontSize: 100,
+              fontSize: 180,
             ),
           ),
           MainButton(
@@ -71,7 +71,7 @@ class _ResultViewState extends State<ResultView> {
             backgroundColor: AppColor.primaryButtonColor,
             titleColor: Colors.white,
             onPressed: () async {
-              await router.replace(GameRouter(team: 'team2'));
+              await router.replace(GameRouter(team: 'team2', newDuration: 90));
             },
           )
         ],

@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 /// hex values of the colors used in the app
 class AppColor {
   static const Color primaryButtonColor = Color(0xFF07638D);
+  static const Color secondaryButtonColor = Color(0xFF6895A9);
   static const Color primaryButtonTextColor = Color(0xFFffffff);
   static const Color lightBlue = Color(0xFFCDD4DB);
   static const Color buttonYellow = Color(0xffFFB800);
@@ -18,4 +19,5 @@ class AppColor {
   static const Color tabuPrimaryBackground = Color(0xff000000);
   static const Color tabuSecondaryBackground = Color(0xffEEEEEE);
   static const Color darkGray = Color(0xff2E3840);
+  static const Color darkButton = Color(0xff404040);
 }
