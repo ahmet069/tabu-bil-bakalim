@@ -1,4 +1,26 @@
 [{
+  "id": 0,
+  "word": "SAUDADE",
+  "tips":
+      "Bir şeyin ya da aşık olunan bir kimsenin yokluğunda hissedilen derin duygusal durum"
+},
+{
+  "id": 1,
+  "word": "ÖZLEMEK",
+  "tips": "Bir kişiye duyulan sarılma isteği."
+},
+{
+  "id": 2,
+  "word": "ÖZLEMEK",
+  "tips": "Bir kişiye duyulan sarılma isteği."
+},
+{
+  "id": 3,
+  "word": "ÖZLEMEK",
+  "tips": "Bir kişiye duyulan sarılma isteği."
+}]
+
+[{
     "id": 1,
     "word": "OKKA",
     "tabu1": "Ağırlık",
@@ -15,5 +37,29 @@
     "tabu3": "Birim",
     "tabu4": "Kilo",
     "tabu5": "Tartı"
+  }
+]
+
+
+[{
+    "id": 0,
+    "word": "SAUDADE",
+    "tips":
+        "Bir şeyin ya da aşık olunan bir kimsenin yokluğunda hissedilen derin duygusal durum",
+  },
+  {
+    "id": 1,
+    "word": "ÖZLEMEK",
+    "tips": "Bir kişiye duyulan sarılma isteği."
+  },
+  {
+    "id": 2,
+    "word": "ÖZLEMEK",
+    "tips": "Bir kişiye duyulan sarılma isteği."
+  },
+  {
+    "id": 3,
+    "word": "ÖZLEMEK",
+    "tips": "Bir kişiye duyulan sarılma isteği."
   }
 ]

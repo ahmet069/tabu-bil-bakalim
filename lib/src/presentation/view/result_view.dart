@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../../../main.dart';
 import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
@@ -23,7 +21,7 @@ class ResultView extends StatefulWidget {
 }
 
 class _ResultViewState extends State<ResultView> {
-  late String winnnerTeam;
+  late String winnnerTeam = '';
   @override
   void initState() {
     context.read<GameBloc>().add(const GameFinish());
@@ -52,31 +50,44 @@ class _ResultViewState extends State<ResultView> {
 
   Widget _pauseBuilder(GameFinished state) {
     return Scaffold(
-        body: Container(
-      width: 1.sw,
-      padding: const EdgeInsets.only(bottom: 20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const SizedBox(),
-          Text(
-            state.score1.toString(),
-            style: GoogleFonts.luckiestGuy(
-              color: AppColor.primaryButtonColor,
-              fontSize: 180,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: AppColor.buttonRed,
+          onPressed: () {},
+          child: const Icon(
+            Icons.exit_to_app,
+            size: 30,
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
+        body: SafeArea(
+          child: SizedBox(
+            width: 1.sw,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Text(
+                //   state.score1.toString(),
+                //   style: GoogleFonts.luckiestGuy(
+                //     color: AppColor.primaryButtonColor,
+                //     fontSize: 180,
+                //   ),
+                // ),
+                const SizedBox(),
+                MainButton(
+                  buttonTitle: '2. TURA BAŞLA',
+                  backgroundColor: AppColor.primaryButtonColor,
+                  titleColor: Colors.white,
+                  onPressed: () async {
+                    await router.replace(
+                      GameRouter(team: 'team2', newDuration: 90),
+                    );
+                  },
+                ),
+                ScoreBoard(score: state.score1, teamName: '1. TAKIM'),
+              ],
             ),
           ),
-          MainButton(
-            buttonTitle: '2. TURA BAŞLA',
-            backgroundColor: AppColor.primaryButtonColor,
-            titleColor: Colors.white,
-            onPressed: () async {
-              await router.replace(GameRouter(team: 'team2', newDuration: 90));
-            },
-          )
-        ],
-      ),
-    ));
+        ));
   }
 
   Widget _resultBuilder(GameFinished state) {
@@ -95,9 +106,9 @@ class _ResultViewState extends State<ResultView> {
                   if (state.score1 == state.score2) {
                     winnnerTeam = 'BERABERE';
                   } else if (state.score1 > state.score2) {
-                    winnnerTeam = '1. TAKIM ';
-                  } else if (state.score1 > state.score2) {
-                    winnnerTeam = '2. TAKIM ';
+                    winnnerTeam = 'KAZANAN: 1. TAKIM ';
+                  } else if (state.score1 < state.score2) {
+                    winnnerTeam = 'KAZANAN: 2. TAKIM ';
                   }
 
                   return Column(
@@ -109,7 +120,7 @@ class _ResultViewState extends State<ResultView> {
                     ],
                   );
                 }
-                return Container();
+                return const Text('Bir şeyler ters gitti');
               },
             ),
             MainButton(

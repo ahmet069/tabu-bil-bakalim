@@ -21,15 +21,15 @@ part 'app_router.gr.dart';
       initial: true,
     ),
     CustomRoute(
-        page: GameView,
-        path: '/GameView',
-        name: 'GameRouter',
-        transitionsBuilder: TransitionsBuilders.fadeIn),
+      page: GameView,
+      path: '/GameView',
+      name: 'GameRouter',
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
     CustomRoute(
       page: ResultView,
       path: '/ResultView',
       name: 'ResultRoute',
-      transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
     CustomRoute(
       page: HowToPlayView,

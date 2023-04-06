@@ -33,8 +33,10 @@ class MyApp extends StatelessWidget {
         designSize: const Size(360, 800),
         minTextAdapt: true,
         builder: (context, _) {
-          SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-              overlays: []);
+          SystemChrome.setEnabledSystemUIMode(
+            SystemUiMode.manual,
+            overlays: [],
+          );
 
           return MaterialApp.router(
             routerDelegate: router.delegate(),

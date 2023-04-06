@@ -38,7 +38,8 @@ class _CountDownState extends State<CountDown> {
         endTime: DateTime.now().add(
           const Duration(
             //* duration *//
-            seconds: 76,
+            // seconds: 76,
+            seconds: 2,
           ),
         ),
         onEnd: () async {

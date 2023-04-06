@@ -9,17 +9,20 @@ class WinnerBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color backgroundColor = teamName.contains('KAZANAN')
+        ? AppColor.buttonGreen
+        : AppColor.buttonYellow;
     return Center(
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 20),
         height: 60,
         width: .80.sw,
         alignment: Alignment.center,
-        decoration: const BoxDecoration(
-            color: AppColor.darkGray,
-            borderRadius: BorderRadius.all(Radius.circular(12))),
+        decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: const BorderRadius.all(Radius.circular(12))),
         child: Text(
-          'Kazanan: $teamName',
+          teamName,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 20,

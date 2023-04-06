@@ -21,7 +21,7 @@ class MainButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: .74.sw,
-      height: 60,
+      height: 70,
       margin: const EdgeInsets.symmetric(vertical: 5),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
