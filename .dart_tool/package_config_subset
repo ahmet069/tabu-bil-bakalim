@@ -170,6 +170,10 @@ google_fonts
 2.12
 file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/google_fonts-4.0.3/
 file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/google_fonts-4.0.3/lib/
+google_mobile_ads
+2.12
+file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/google_mobile_ads-2.4.0/
+file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/google_mobile_ads-2.4.0/lib/
 graphs
 2.12
 file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/graphs-2.2.0/
@@ -342,6 +346,10 @@ stack_trace
 2.18
 file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/stack_trace-1.11.0/
 file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/stack_trace-1.11.0/lib/
+store_redirect
+2.12
+file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/store_redirect-2.0.1/
+file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/store_redirect-2.0.1/lib/
 stream_channel
 2.14
 file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/stream_channel-2.1.1/
@@ -382,6 +390,10 @@ vector_math
 2.14
 file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/vector_math-2.1.4/
 file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/vector_math-2.1.4/lib/
+visibility_detector
+2.12
+file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/visibility_detector-0.3.3/
+file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/visibility_detector-0.3.3/lib/
 watcher
 2.14
 file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/watcher-1.0.2/

@@ -10,13 +10,11 @@ final injector = GetIt.instance;
 Future<void> init() async {
   injector
     //* DATA SOURCES
-    ..registerLazySingleton<TabuLocalDataSource>(
-        () => TabuLocalDataSourceImpl())
+    ..registerLazySingleton<TabuLocalDataSource>(() => TabuLocalDataSourceImpl())
 
     //* REPOSITORIES
     // ignore: cascade_invocations
-    ..registerLazySingleton<TabuRepository>(
-        () => TabuRepositoryImpl(injector()))
+    ..registerLazySingleton<TabuRepository>(() => TabuRepositoryImpl(injector()))
 
     //* USECASE
     ..registerLazySingleton<TabuUsecase>(() => TabuUsecase(injector()))

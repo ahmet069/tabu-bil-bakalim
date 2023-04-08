@@ -1,3 +1,5 @@
+import '../entities/word/word.dart';
+
 abstract class WordGameRepository {
-  Future<String> getAllWords();
+  Future<List<Word>> getAllWords();
 }

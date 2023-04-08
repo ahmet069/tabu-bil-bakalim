@@ -6,9 +6,13 @@ class HomeImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/images/image1.png',
-      width: .60.sw,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(0),
+      child: Image.asset(
+        'assets/images/image1.png',
+        width: .6.sw,
+        height: .6.sw,
+      ),
     );
   }
 }

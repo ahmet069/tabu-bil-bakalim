@@ -12,7 +12,6 @@ class TabuLocalDataSourceImpl extends TabuLocalDataSource {
 
   @override
   Future<List<TabuModel>> GetRandomTabo() async {
-    // todo make a random
     try {
       final data = TabuData.getAllTabuWords();
       final dataList = data.map((e) => TabuModel.fromJson(e)).toList();

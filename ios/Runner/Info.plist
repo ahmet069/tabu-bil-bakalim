@@ -29,6 +29,10 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>
+	<!-- ADMOB -->
+	<!-- <key>GADApplicationIdentifier</key> -->
+	<!-- <string>ca-app-pub-4086698259318942~4866719222</string> -->
+	<!-- ADMOB -->
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>

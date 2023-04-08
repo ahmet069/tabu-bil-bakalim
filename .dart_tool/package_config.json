@@ -278,6 +278,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "google_mobile_ads",
+      "rootUri": "file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/google_mobile_ads-2.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "graphs",
       "rootUri": "file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/graphs-2.2.0",
       "packageUri": "lib/",
@@ -542,6 +548,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "store_redirect",
+      "rootUri": "file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/store_redirect-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "stream_channel",
       "rootUri": "file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/stream_channel-2.1.1",
       "packageUri": "lib/",
@@ -602,6 +614,12 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "visibility_detector",
+      "rootUri": "file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/visibility_detector-0.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "watcher",
       "rootUri": "file:///Users/ahmetsubasi/.pub-cache/hosted/pub.dev/watcher-1.0.2",
       "packageUri": "lib/",
@@ -644,7 +662,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-04-03T22:31:55.386266Z",
+  "generated": "2023-04-08T12:32:45.199563Z",
   "generator": "pub",
   "generatorVersion": "2.19.4"
 }

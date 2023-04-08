@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'src/config/router/app_router.dart';
 import 'src/injector.dart' as di;
@@ -10,6 +11,8 @@ import 'src/presentation/bloc/game/game_bloc.dart';
 // ignore: unused_element
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   await _initalize();
   runApp(const MyApp());
 }

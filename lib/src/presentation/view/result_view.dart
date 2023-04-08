@@ -43,7 +43,6 @@ class _ResultViewState extends State<ResultView> {
         return const Center(
           child: Text('Bir şeyler ters gitti'),
         );
-        // return _resultBuilder();
       }),
     );
   }
@@ -52,7 +51,30 @@ class _ResultViewState extends State<ResultView> {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColor.buttonRed,
-          onPressed: () {},
+          onPressed: () async {
+            // await router.replace(const HomeRouter());
+            return showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: const Text('Çıkmak istediğinize emin misiniz?'),
+                  actions: <Widget>[
+                    ElevatedButton(
+                      onPressed: () => Navigator.of(context).pop(false),
+                      child: const Text('HAYIR'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        Navigator.of(context).pop(true);
+                        await router.replace(const HomeRouter());
+                      },
+                      child: const Text('EVET'),
+                    ),
+                  ],
+                );
+              },
+            );
+          },
           child: const Icon(
             Icons.exit_to_app,
             size: 30,
@@ -100,6 +122,11 @@ class _ResultViewState extends State<ResultView> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(),
+            Image.asset(
+              'assets/images/logo.png',
+              width: .4.sw,
+              height: .4.sw,
+            ),
             BlocBuilder<GameBloc, GameState>(
               builder: (context, state) {
                 if (state is GameFinished) {

@@ -7,6 +7,7 @@ import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
 import '../../core/components/buttons/main_button.dart';
 import '../widget/home/home_image.dart';
+import '../widget/home/store_redirect_button.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -21,7 +22,6 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: null,
-      // TODO comlate here
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -40,17 +40,11 @@ class _HomeViewState extends State<HomeView> {
                 SizedBox(
                   height: .5.sh,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const HomeImage(),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 20),
-                        child: Text(
-                          'BİL BAKALIM',
-                          style: GoogleFonts.luckiestGuy(
-                            fontSize: 60,
-                          ),
-                        ),
+                      Text(
+                        'BİL BAKALIM',
+                        style: GoogleFonts.luckiestGuy(fontWeight: FontWeight.w100, fontSize: 50),
                       ),
                     ],
                   ),
@@ -68,8 +62,8 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   child: Column(
                     //* play button
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 30),
                       Column(
                         children: [
                           MainButton(
@@ -92,10 +86,10 @@ class _HomeViewState extends State<HomeView> {
                               await router.push(const HowToPlayRoute());
                             },
                           ),
+                          //TODO: play butonu düzenle
+                          //  StoreRedirectButton(),
                         ],
                       ),
-                      // const SetDuration(),
-                      const Text('Designed by Ahmet Subaşı'),
                     ],
                   ),
                 ),

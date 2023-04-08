@@ -28,8 +28,9 @@ class GameView extends StatefulWidget {
 class _GameViewState extends State<GameView> {
   @override
   void initState() {
-    context.read<GameBloc>().add(
-        StartGame(currentTeam: widget.team, newDuration: widget.newDuration));
+    context
+        .read<GameBloc>()
+        .add(StartGame(currentTeam: widget.team, newDuration: widget.newDuration));
     super.initState();
   }
 
@@ -79,9 +80,9 @@ class _GameViewState extends State<GameView> {
               children: const [
                 TabuCard(),
                 ScoreWidget(),
+                GameButtons(),
               ],
             ),
-            const GameButtons(),
           ],
         ),
       ),

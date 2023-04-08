@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../domain/entities/word/word.dart';
+
 part 'word_model.g.dart';
 
 @JsonSerializable()
@@ -18,5 +20,17 @@ class WordModel extends Equatable {
   Map<String, dynamic> toJson() => _$WordModelToJson(this);
 
   @override
-  List<Object?> get props => [id, word, tips];
+  List<Object?> get props => [
+        id,
+        word,
+        tips,
+      ];
+
+  Word toEntity() {
+    return Word(
+      id: id,
+      word: word,
+      tips: tips,
+    );
+  }
 }
