@@ -15,8 +15,7 @@ class ScoreBoard extends StatelessWidget {
       height: 77,
       padding: const EdgeInsets.symmetric(horizontal: 5),
       decoration: const BoxDecoration(
-          color: AppColor.darkGray,
-          borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: AppColor.darkGray, borderRadius: BorderRadius.all(Radius.circular(20))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -43,7 +42,7 @@ class ScoreBoard extends StatelessWidget {
             ),
             child: Text(
               score.toString(),
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
             ),
           ),
         ],

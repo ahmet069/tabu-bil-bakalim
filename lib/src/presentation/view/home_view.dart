@@ -1,13 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../main.dart';
 import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
+import '../../core/components/admob/admob_banner.dart';
 import '../../core/components/buttons/main_button.dart';
 import '../widget/home/home_image.dart';
-import '../widget/home/store_redirect_button.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -23,10 +25,6 @@ class _HomeViewState extends State<HomeView> {
     return WillPopScope(
       onWillPop: null,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-        ),
         body: SafeArea(
           bottom: false,
           top: false,
@@ -37,8 +35,11 @@ class _HomeViewState extends State<HomeView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                const MyAdmobBanner(
+                  bannerId: 'ca-app-pub-4086698259318942/3789112672',
+                  adSize: AdSize.fullBanner,
+                ),
                 SizedBox(
-                  height: .5.sh,
                   child: Column(
                     children: [
                       const HomeImage(),
@@ -61,7 +62,6 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                   child: Column(
-                    //* play button
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Column(
@@ -88,6 +88,13 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           //TODO: play butonu düzenle
                           //  StoreRedirectButton(),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: MyAdmobBanner(
+                              bannerId: 'ca-app-pub-4086698259318942/6130305170',
+                              adSize: AdSize.banner,
+                            ),
+                          )
                         ],
                       ),
                     ],

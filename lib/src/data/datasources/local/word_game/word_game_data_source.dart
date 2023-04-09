@@ -1,4 +1,3 @@
-import '../../../../domain/usecase/word_game_usecase.dart';
 import '../../../dummy_data/word_game_data.dart';
 import '../../../models/word_model/word_model.dart';
 
@@ -7,7 +6,6 @@ abstract class WordGameLocalDataSource {
 }
 
 class WordGameLocalDataSourceImpl extends WordGameLocalDataSource {
-
   @override
   Future<List<WordModel>> getAllWord() async {
     try {

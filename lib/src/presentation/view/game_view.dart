@@ -37,36 +37,39 @@ class _GameViewState extends State<GameView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColor.buttonRed,
-        elevation: 20,
-        onPressed: () async {
-          // await router.replace(const HomeRouter());
-          return showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: const Text('Çıkmak istediğinize emin misiniz?'),
-                actions: <Widget>[
-                  ElevatedButton(
-                    onPressed: () => Navigator.of(context).pop(false),
-                    child: const Text('HAYIR'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      Navigator.of(context).pop(true);
-                      await router.replace(const HomeRouter());
-                    },
-                    child: const Text('EVET'),
-                  ),
-                ],
-              );
-            },
-          );
-        },
-        child: const Icon(
-          Icons.exit_to_app,
-          size: 28,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: FloatingActionButton(
+          backgroundColor: AppColor.buttonRed,
+          elevation: 20,
+          onPressed: () async {
+            // await router.replace(const HomeRouter());
+            return showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: const Text('Çıkmak istediğinize emin misiniz?'),
+                  actions: <Widget>[
+                    ElevatedButton(
+                      onPressed: () => Navigator.of(context).pop(false),
+                      child: const Text('HAYIR'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        Navigator.of(context).pop(true);
+                        await router.replace(const HomeRouter());
+                      },
+                      child: const Text('EVET'),
+                    ),
+                  ],
+                );
+              },
+            );
+          },
+          child: const Icon(
+            Icons.exit_to_app,
+            size: 28,
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,

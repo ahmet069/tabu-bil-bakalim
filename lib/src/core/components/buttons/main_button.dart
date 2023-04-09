@@ -20,14 +20,13 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: .74.sw,
+      width: .80.sw,
       height: 70,
       margin: const EdgeInsets.symmetric(vertical: 5),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)),
         ),
         onPressed: () async {
           await onPressed!();
@@ -36,10 +35,7 @@ class MainButton extends StatelessWidget {
           buttonTitle,
           textAlign: TextAlign.center,
           style: GoogleFonts.luckiestGuy(
-              color: titleColor,
-              fontSize: 28,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 2),
+              color: titleColor, fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: 2),
         ),
       ),
     );

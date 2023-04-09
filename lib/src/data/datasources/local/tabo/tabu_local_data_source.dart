@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import '../../../dummy_data/tabu_data.dart';
 import '../../../models/tabu_model/tabu_model.dart';
 
@@ -8,8 +6,6 @@ abstract class TabuLocalDataSource {
 }
 
 class TabuLocalDataSourceImpl extends TabuLocalDataSource {
-  final _random = new Random();
-
   @override
   Future<List<TabuModel>> GetRandomTabo() async {
     try {

@@ -9,6 +9,6 @@ abstract class AdsState extends Equatable {
 
 class AdsInitial extends AdsState {}
 
-class AdsLoaded extends AdsState {}
+class AllAdsLoaded extends AdsState {}
 
 class AdsError extends AdsState {}
