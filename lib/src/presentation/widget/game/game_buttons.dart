@@ -1,8 +1,10 @@
 // ignore_for_file: avoid_dynamic_calls, non_constant_identifier_names
 
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../config/color/app_color.dart';
 import '../../bloc/game/game_bloc.dart';
 
@@ -154,9 +156,8 @@ class GameButtonsState extends State<GameButtons> {
               child: Container(
                 width: 40,
                 height: 40,
-                decoration: BoxDecoration(
-                    color: backgroundColor,
-                    borderRadius: BorderRadius.circular(20)),
+                decoration:
+                    BoxDecoration(color: backgroundColor, borderRadius: BorderRadius.circular(20)),
                 alignment: Alignment.center,
                 child: Text(
                   value.toString(),
