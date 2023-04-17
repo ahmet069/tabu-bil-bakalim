@@ -3,8 +3,9 @@ import 'package:flutter/cupertino.dart';
 import '../../presentation/view/game_view.dart';
 import '../../presentation/view/home_view.dart';
 import '../../presentation/view/how_to_play_view.dart';
+import '../../presentation/view/pause_view.dart';
 import '../../presentation/view/result_view.dart';
-
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 part 'app_router.gr.dart';
 
 /// `AppRouter` is a class that extends `_$AppRouter`
@@ -37,6 +38,12 @@ part 'app_router.gr.dart';
       name: 'HowToPlayRoute',
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
+    CustomRoute(
+      page: PauseView,
+      path: '/PauseView',
+      name: 'PauseRoute',
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    )
   ],
 )
 

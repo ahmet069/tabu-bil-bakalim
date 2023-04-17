@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,16 +7,17 @@ import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
 import '../../core/components/admob/admob_banner.dart';
 import '../../core/components/buttons/main_button.dart';
-import '../bloc/ads/ads_bloc.dart';
 import '../bloc/game/game_bloc.dart';
 import '../widget/result/score_board.dart';
 import '../widget/result/winner_box.dart';
 
 class ResultView extends StatefulWidget {
+  final InterstitialAd? interstitialAd;
   final String team;
   const ResultView({
     super.key,
     required this.team,
+    this.interstitialAd,
   });
 
   @override
@@ -29,7 +29,7 @@ class _ResultViewState extends State<ResultView> {
   @override
   void initState() {
     context.read<GameBloc>().add(const GameFinish());
-    // context.read<GameBloc>().add(StartGame(currentTeam: widget.team));
+    widget.interstitialAd?.show();
     super.initState();
   }
 
@@ -38,93 +38,25 @@ class _ResultViewState extends State<ResultView> {
     return Scaffold(
       body: BlocBuilder<GameBloc, GameState>(builder: (context, state) {
         if (state is GameFinished) {
-          if (state.currentTeam == 'team1') {
-            return _pauseBuilder(state);
-          } else if (state.currentTeam == 'team2') {
+          if (state.currentTeam == 'team2') {
             return _resultBuilder(state);
           }
         }
-        return const Center(
-          child: Text('Bir şeyler ters gitti'),
+        return Column(
+          children: [
+            const Text('Bir şeyler ters gitti'),
+            MainButton(
+              buttonTitle: 'Ana Sayfa',
+              backgroundColor: AppColor.primaryButtonTextColor,
+              titleColor: AppColor.primaryButtonTextColor,
+              onPressed: () async {
+                await router.replace(const HomeRouter());
+              },
+            )
+          ],
         );
       }),
     );
-  }
-
-  Widget _pauseBuilder(GameFinished state) {
-    return Scaffold(
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: FloatingActionButton(
-            backgroundColor: AppColor.buttonRed,
-            onPressed: () async {
-              // await router.replace(const HomeRouter());
-              return showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: const Text('Çıkmak istediğinize emin misiniz?'),
-                    actions: <Widget>[
-                      ElevatedButton(
-                        onPressed: () => Navigator.of(context).pop(false),
-                        child: const Text('HAYIR'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          Navigator.of(context).pop(true);
-                          await router.replace(const HomeRouter());
-                        },
-                        child: const Text('EVET'),
-                      ),
-                    ],
-                  );
-                },
-              );
-            },
-            child: const Icon(
-              Icons.exit_to_app,
-              size: 30,
-            ),
-          ),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
-        body: SafeArea(
-          child: SizedBox(
-            width: 1.sw,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Text(
-                //   state.score1.toString(),
-                //   style: GoogleFonts.luckiestGuy(
-                //     color: AppColor.primaryButtonColor,
-                //     fontSize: 180,
-                //   ),
-                // ),
-                const SizedBox(),
-                Column(
-                  children: [
-                    ScoreBoard(score: state.score1, teamName: '1. TAKIM'),
-                    MainButton(
-                      buttonTitle: '2. TURA BAŞLA',
-                      backgroundColor: AppColor.primaryButtonColor,
-                      titleColor: Colors.white,
-                      onPressed: () async {
-                        await router.replace(
-                          GameRouter(team: 'team2', newDuration: 90),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                const MyAdmobBanner(
-                  bannerId: 'ca-app-pub-4086698259318942/4702206267',
-                  adSize: AdSize.mediumRectangle,
-                )
-              ],
-            ),
-          ),
-        ));
   }
 
   Widget _resultBuilder(GameFinished state) {

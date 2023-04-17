@@ -47,6 +47,7 @@ class _$AppRouter extends RootStackRouter {
         child: ResultView(
           key: args.key,
           team: args.team,
+          interstitialAd: args.interstitialAd,
         ),
         opaque: true,
         barrierDismissible: false,
@@ -56,6 +57,15 @@ class _$AppRouter extends RootStackRouter {
       return CustomPage<dynamic>(
         routeData: routeData,
         child: const HowToPlayView(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    PauseRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const PauseView(),
         transitionsBuilder: TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -86,6 +96,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           HowToPlayRoute.name,
           path: '/HowToPlayView',
+        ),
+        RouteConfig(
+          PauseRoute.name,
+          path: '/PauseView',
         ),
       ];
 }
@@ -147,12 +161,14 @@ class ResultRoute extends PageRouteInfo<ResultRouteArgs> {
   ResultRoute({
     Key? key,
     required String team,
+    InterstitialAd? interstitialAd,
   }) : super(
           ResultRoute.name,
           path: '/ResultView',
           args: ResultRouteArgs(
             key: key,
             team: team,
+            interstitialAd: interstitialAd,
           ),
         );
 
@@ -163,15 +179,18 @@ class ResultRouteArgs {
   const ResultRouteArgs({
     this.key,
     required this.team,
+    this.interstitialAd,
   });
 
   final Key? key;
 
   final String team;
 
+  final InterstitialAd? interstitialAd;
+
   @override
   String toString() {
-    return 'ResultRouteArgs{key: $key, team: $team}';
+    return 'ResultRouteArgs{key: $key, team: $team, interstitialAd: $interstitialAd}';
   }
 }
 
@@ -185,4 +204,16 @@ class HowToPlayRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HowToPlayRoute';
+}
+
+/// generated route for
+/// [PauseView]
+class PauseRoute extends PageRouteInfo<void> {
+  const PauseRoute()
+      : super(
+          PauseRoute.name,
+          path: '/PauseView',
+        );
+
+  static const String name = 'PauseRoute';
 }

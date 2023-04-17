@@ -1,7 +1,6 @@
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../main.dart';
 import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
@@ -10,7 +9,6 @@ import '../widget/game/count_down.dart';
 import '../widget/game/game_buttons.dart';
 import '../widget/game/score_widget.dart';
 import '../widget/game/tabu_card.dart';
-import 'home_view.dart';
 
 class GameView extends StatefulWidget {
   final String team;

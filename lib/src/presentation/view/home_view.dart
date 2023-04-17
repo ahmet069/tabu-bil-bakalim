@@ -20,6 +20,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final int currentDuration = 60;
+  InterstitialAd? interstitialAd;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -86,7 +87,6 @@ class _HomeViewState extends State<HomeView> {
                               await router.push(const HowToPlayRoute());
                             },
                           ),
-                          //TODO: play butonu düzenle
                           //  StoreRedirectButton(),
                           const Padding(
                             padding: EdgeInsets.all(8.0),
