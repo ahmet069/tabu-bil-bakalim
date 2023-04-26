@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../main.dart';
@@ -77,13 +76,9 @@ class _GameViewState extends State<GameView> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CountDown(team: widget.team),
-            Column(
-              children: const [
-                TabuCard(),
-                ScoreWidget(),
-                GameButtons(),
-              ],
-            ),
+            TabuCard(),
+            ScoreWidget(),
+            GameButtons(),
           ],
         ),
       ),

@@ -67,9 +67,12 @@ class _ResultViewState extends State<ResultView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const MyAdmobBanner(
-              bannerId: 'ca-app-pub-4086698259318942/2076042929',
-              adSize: AdSize.fullBanner,
+            Container(
+              margin: const EdgeInsets.only(top: 40),
+              child: const MyAdmobBanner(
+                bannerId: 'ca-app-pub-4086698259318942/2076042929',
+                adSize: AdSize.fullBanner,
+              ),
             ),
             Image.asset(
               'assets/images/logo.png',

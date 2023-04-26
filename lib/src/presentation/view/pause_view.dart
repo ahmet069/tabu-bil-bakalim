@@ -98,9 +98,12 @@ class _PauseViewState extends State<PauseView> {
                     ),
                   ],
                 ),
-                const MyAdmobBanner(
-                  bannerId: 'ca-app-pub-4086698259318942/4702206267',
-                  adSize: AdSize.mediumRectangle,
+                Container(
+                  margin: const EdgeInsets.only(top: 30),
+                  child: const MyAdmobBanner(
+                    bannerId: 'ca-app-pub-4086698259318942/4702206267',
+                    adSize: AdSize.mediumRectangle,
+                  ),
                 )
               ],
             ),

@@ -98,6 +98,7 @@ class GameButtonsState extends State<GameButtons> {
               },
               backgroundColor: AppColor.buttonYellow,
               buttonTitle: 'PAS',
+              textColor: Colors.white,
               value: 0,
             ),
             _button(
@@ -106,6 +107,7 @@ class GameButtonsState extends State<GameButtons> {
               },
               backgroundColor: AppColor.buttonGreen,
               buttonTitle: 'DOĞRU',
+              textColor: Colors.white,
               value: 2,
             ),
           ],
@@ -141,7 +143,7 @@ class GameButtonsState extends State<GameButtons> {
                   buttonTitle,
                   style: TextStyle(
                     color: textColor,
-                    fontSize: 22,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

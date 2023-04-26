@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,9 +35,12 @@ class _HomeViewState extends State<HomeView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const MyAdmobBanner(
-                  bannerId: 'ca-app-pub-4086698259318942/3789112672',
-                  adSize: AdSize.fullBanner,
+                const Padding(
+                  padding: EdgeInsets.only(top: 40.0),
+                  child: MyAdmobBanner(
+                    bannerId: 'ca-app-pub-4086698259318942/3789112672',
+                    adSize: AdSize.fullBanner,
+                  ),
                 ),
                 SizedBox(
                   child: Column(
