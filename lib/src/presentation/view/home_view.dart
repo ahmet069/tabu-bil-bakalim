@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -8,7 +9,9 @@ import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
 import '../../core/components/admob/admob_banner.dart';
 import '../../core/components/buttons/main_button.dart';
+import '../bloc/constant/constant_bloc.dart';
 import '../widget/home/home_image.dart';
+import '../widget/home/set_duration.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -18,6 +21,12 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    context.read<ConstantBloc>().add(const GameInit());
+    super.initState();
+  }
+
   final int currentDuration = 60;
   InterstitialAd? interstitialAd;
   @override
@@ -35,12 +44,9 @@ class _HomeViewState extends State<HomeView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 40.0),
-                  child: MyAdmobBanner(
-                    bannerId: 'ca-app-pub-4086698259318942/3789112672',
-                    adSize: AdSize.fullBanner,
-                  ),
+                const MyAdmobBanner(
+                  bannerId: 'ca-app-pub-4086698259318942/3789112672',
+                  adSize: AdSize.fullBanner,
                 ),
                 SizedBox(
                   child: Column(
@@ -55,14 +61,12 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 Container(
                   width: 1.sw,
-                  height: .3.sh,
+                  height: .38.sh,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
                     color: AppColor.lightBlue,
-                    borderRadius: BorderRadiusDirectional.only(
-                      topEnd: Radius.circular(40),
-                      topStart: Radius.circular(40),
-                    ),
+                    borderRadius:
+                        BorderRadiusDirectional.vertical(top: Radius.elliptical(1200, 100)),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +84,6 @@ class _HomeViewState extends State<HomeView> {
                               ));
                             },
                           ),
-                          //* how to play button
                           MainButton(
                             buttonTitle: 'NASIL OYNANIR ?',
                             backgroundColor: AppColor.primaryButtonColor,
@@ -89,14 +92,7 @@ class _HomeViewState extends State<HomeView> {
                               await router.push(const HowToPlayRoute());
                             },
                           ),
-                          //  StoreRedirectButton(),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: MyAdmobBanner(
-                              bannerId: 'ca-app-pub-4086698259318942/6130305170',
-                              adSize: AdSize.banner,
-                            ),
-                          )
+                          const SetDuration(),
                         ],
                       ),
                     ],

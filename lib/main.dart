@@ -6,6 +6,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'src/config/router/app_router.dart';
 import 'src/injector.dart' as di;
+import 'src/presentation/bloc/constant/constant_bloc.dart';
 import 'src/presentation/bloc/game/game_bloc.dart';
 
 // ignore: unused_element
@@ -31,11 +32,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => di.injector<GameBloc>()),
+        BlocProvider(create: (_) => di.injector<ConstantBloc>()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 800),
         minTextAdapt: true,
         builder: (context, _) {
+          // ignore: discarded_futures
           SystemChrome.setEnabledSystemUIMode(
             SystemUiMode.manual,
             overlays: [],

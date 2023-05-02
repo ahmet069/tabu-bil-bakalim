@@ -1,14 +1,14 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../../main.dart';
 import '../../../config/router/app_router.dart';
+import '../../bloc/constant/constant_bloc.dart';
 
 class CountDown extends StatefulWidget {
   final String team;
@@ -57,36 +57,44 @@ class _CountDownState extends State<CountDown> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
-      child: TimerCountdown(
-        format: CountDownTimerFormat.secondsOnly,
-        timeTextStyle: GoogleFonts.luckiestGuy(
-          fontSize: 34,
-        ),
-        descriptionTextStyle: const TextStyle(
-          fontSize: 0,
-        ),
-        endTime: DateTime.now().add(
-          const Duration(
-            //* duration *//
-            seconds: 76,
-            // seconds: 2,
-          ),
-        ),
-        onEnd: () async {
-          if (widget.team == 'team1') {
-            await router.replace(const PauseRoute());
-          } else if (widget.team == 'team2') {
-            await router.replace(
-              ResultRoute(
-                team: widget.team,
-                interstitialAd: widget.team == 'team2' ? interstitialAd : null,
+    return BlocBuilder<ConstantBloc, ConstantState>(
+      builder: (context, state) {
+        if (state is GameInitial) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 50.0),
+            child: TimerCountdown(
+              format: CountDownTimerFormat.secondsOnly,
+              timeTextStyle: GoogleFonts.luckiestGuy(
+                fontSize: 34,
               ),
-            );
-          }
-        },
-      ),
+              descriptionTextStyle: const TextStyle(
+                fontSize: 0,
+              ),
+              endTime: DateTime.now().add(
+                Duration(
+                  //* duration *//
+                  seconds: state.duration,
+                  // seconds: 2,
+                ),
+              ),
+              onEnd: () async {
+                if (widget.team == 'team1') {
+                  await router.replace(const PauseRoute());
+                } else if (widget.team == 'team2') {
+                  await router.replace(
+                    ResultRoute(
+                      team: widget.team,
+                      interstitialAd: widget.team == 'team2' ? interstitialAd : null,
+                    ),
+                  );
+                }
+              },
+            ),
+          );
+        } else {
+          return Container();
+        }
+      },
     );
   }
 }

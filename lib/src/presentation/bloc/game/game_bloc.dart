@@ -13,7 +13,7 @@ part 'game_state.dart';
 class GameBloc extends Bloc<GameEvent, GameState> {
   final TabuUsecase _usecase;
   final _seed = Random.secure();
-  late int duration;
+  late int duration = 75;
   late int skipCount;
   late int ttrue;
   late int tabu;

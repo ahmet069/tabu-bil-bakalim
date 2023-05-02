@@ -10,8 +10,8 @@ class HomeImage extends StatelessWidget {
       borderRadius: BorderRadius.circular(0),
       child: Image.asset(
         'assets/images/image1.png',
-        width: .6.sw,
-        height: .6.sw,
+        width: .8.sw,
+        height: .7.sw,
       ),
     );
   }

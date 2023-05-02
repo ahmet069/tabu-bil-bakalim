@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../main.dart';
 import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
+import '../../core/components/dialog/yes_no_dialog.dart';
 import '../bloc/game/game_bloc.dart';
 import '../widget/game/count_down.dart';
 import '../widget/game/game_buttons.dart';
@@ -41,6 +42,10 @@ class _GameViewState extends State<GameView> {
           elevation: 20,
           onPressed: () async {
             // await router.replace(const HomeRouter());
+            const YesNoDialog(
+                title: 'Deneme',
+                backgroundColor: Colors.white,
+                content: 'Çıkmak istediğinize emin misiniz ?');
             return showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -76,9 +81,9 @@ class _GameViewState extends State<GameView> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CountDown(team: widget.team),
-            TabuCard(),
-            ScoreWidget(),
-            GameButtons(),
+            const TabuCard(),
+            const ScoreWidget(),
+            const GameButtons(),
           ],
         ),
       ),
