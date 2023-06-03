@@ -24,7 +24,7 @@ Future<void> _initalize() async {
 
 final router = AppRouter();
 
-//! my-app render side ****************************************************************
+//! my-app render side *********************************************************
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override

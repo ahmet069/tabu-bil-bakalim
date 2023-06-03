@@ -669,7 +669,7 @@ class TabuData {
       },
       {
         'id': 74,
-        'word': 'PlatStation',
+        'word': 'Playstation',
         'tabu1': 'Kol',
         'tabu2': 'Oyun',
         'tabu3': 'Konsol',
@@ -912,7 +912,7 @@ class TabuData {
       },
       {
         'id': 101,
-        'word': 'Cezevi',
+        'word': 'Cezaevi',
         'tabu1': 'Hapishane',
         'tabu2': 'Suçlu',
         'tabu3': 'Mahkum',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../main.dart';
 import '../../config/color/app_color.dart';
 import '../../config/router/app_router.dart';
@@ -26,9 +27,7 @@ class GameView extends StatefulWidget {
 class _GameViewState extends State<GameView> {
   @override
   void initState() {
-    context
-        .read<GameBloc>()
-        .add(StartGame(currentTeam: widget.team, newDuration: widget.newDuration));
+    context.read<GameBloc>().add(StartGame(currentTeam: widget.team, newDuration: widget.newDuration));
     super.initState();
   }
 
@@ -43,27 +42,31 @@ class _GameViewState extends State<GameView> {
           onPressed: () async {
             // await router.replace(const HomeRouter());
             const YesNoDialog(
-                title: 'Deneme',
-                backgroundColor: Colors.white,
-                content: 'Çıkmak istediğinize emin misiniz ?');
+                title: 'Deneme', backgroundColor: Colors.white, content: 'Çıkmak istediğinize emin misiniz ?');
             return showDialog(
               context: context,
               builder: (BuildContext context) {
-                return AlertDialog(
-                  title: const Text('Çıkmak istediğinize emin misiniz?'),
-                  actions: <Widget>[
-                    ElevatedButton(
-                      onPressed: () => Navigator.of(context).pop(false),
-                      child: const Text('HAYIR'),
+                return Container(
+                  child: AlertDialog(
+                    backgroundColor: AppColor.lightBlue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
                     ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        Navigator.of(context).pop(true);
-                        await router.replace(const HomeRouter());
-                      },
-                      child: const Text('EVET'),
-                    ),
-                  ],
+                    title: const Text('Çıkmak istediğinize emin misiniz?'),
+                    actions: <Widget>[
+                      ElevatedButton(
+                        onPressed: () => Navigator.of(context).pop(false),
+                        child: const Text('HAYIR'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          Navigator.of(context).pop(true);
+                          await router.replace(const HomeRouter());
+                        },
+                        child: const Text('EVET'),
+                      ),
+                    ],
+                  ),
                 );
               },
             );

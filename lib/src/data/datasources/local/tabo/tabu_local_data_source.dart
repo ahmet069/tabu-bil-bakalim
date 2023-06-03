@@ -11,7 +11,6 @@ class TabuLocalDataSourceImpl extends TabuLocalDataSource {
     try {
       final data = TabuData.getAllTabuWords();
       final dataList = data.map((e) => TabuModel.fromJson(e)).toList();
-
       return dataList;
     } on Exception catch (_) {
       rethrow;
