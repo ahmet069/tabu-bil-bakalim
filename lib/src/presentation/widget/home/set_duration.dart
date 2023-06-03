@@ -50,6 +50,9 @@ class SetDuration extends StatelessWidget {
         onPressed: () {
           context.read<ConstantBloc>().add(ChangeDuration(newDuration: duration));
         },
+        onLongPress: () {
+          context.read<ConstantBloc>().add(const ChangeDuration(newDuration: 4));
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: bacgroundColor,
           shape: RoundedRectangleBorder(
@@ -63,7 +66,7 @@ class SetDuration extends StatelessWidget {
           child: Text(
             duration.toString(),
             style: GoogleFonts.luckiestGuy(
-              fontSize: 24,
+              fontSize: 20,
             ),
           ),
         ),
