@@ -71,6 +71,15 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    ConnectionErrorRouter.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const ConnectionErrorView(),
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
   };
 
   @override
@@ -100,6 +109,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           PauseRoute.name,
           path: '/PauseView',
+        ),
+        RouteConfig(
+          ConnectionErrorRouter.name,
+          path: '/ConnectionErrorView',
         ),
       ];
 }
@@ -216,4 +229,16 @@ class PauseRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'PauseRoute';
+}
+
+/// generated route for
+/// [ConnectionErrorView]
+class ConnectionErrorRouter extends PageRouteInfo<void> {
+  const ConnectionErrorRouter()
+      : super(
+          ConnectionErrorRouter.name,
+          path: '/ConnectionErrorView',
+        );
+
+  static const String name = 'ConnectionErrorRouter';
 }

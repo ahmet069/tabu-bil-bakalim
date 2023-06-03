@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import '../../presentation/view/connection_error_view.dart';
 import '../../presentation/view/game_view.dart';
 import '../../presentation/view/home_view.dart';
 import '../../presentation/view/how_to_play_view.dart';
@@ -42,6 +43,12 @@ part 'app_router.gr.dart';
       page: PauseView,
       path: '/PauseView',
       name: 'PauseRoute',
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+    CustomRoute(
+      page: ConnectionErrorView,
+      path: '/ConnectionErrorView',
+      name: 'ConnectionErrorRouter',
       transitionsBuilder: TransitionsBuilders.fadeIn,
     )
   ],

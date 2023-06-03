@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -24,20 +23,20 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   late String currentTeam;
   var tabuData = <Tabu>[];
 
+// TODO seslerde sorun var buraları hallet
   Future<void> _trueEffect() async {
-    await AssetsAudioPlayer.newPlayer().open(
-      Audio('assets/audios/true.mp3'),
-      autoStart: true,
-      showNotification: true,
-    );
+    // await AssetsAudioPlayer.newPlayer().open(
+    //   Audio('assets/audios/true.mp3'),
+    //   showNotification: true,
+    // );
   }
 
   Future<void> _falseEffect() async {
-    await AssetsAudioPlayer.newPlayer().open(
-      Audio('assets/audios/false.mp3'),
-      autoStart: true,
-      showNotification: true,
-    );
+    // await AssetsAudioPlayer.newPlayer().open(
+    //   Audio('assets/audios/false.mp3'),
+    //   autoStart: true,
+    //   showNotification: true,
+    // );
   }
 
   GameBloc(this._usecase) : super(const GameInitial()) {
