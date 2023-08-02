@@ -47,7 +47,7 @@ class _CountDownState extends State<CountDown> {
           if (kDebugMode) {
             print('intersititial fail');
           }
-          interstitialAd!.show();
+          interstitialAd;
         },
         onAdFailedToLoad: (LoadAdError error) {
           if (kDebugMode) {
@@ -60,41 +60,38 @@ class _CountDownState extends State<CountDown> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ConstantBloc, ConstantState>(
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.only(top: 50.0),
-          child: TimerCountdown(
-            format: CountDownTimerFormat.secondsOnly,
-            colonsTextStyle: const TextStyle(color: Colors.black),
-            timeTextStyle: GoogleFonts.luckiestGuy(
-              fontSize: 34,
-            ),
-            descriptionTextStyle: const TextStyle(
-              fontSize: 0,
-            ),
-            endTime: DateTime.now().add(
-              const Duration(
-                //* duration *//
-                seconds: 60,
-                // seconds: 2,
-              ),
-            ),
-            onEnd: () async {
-              if (widget.team == 'team1') {
-                await router.replace(const PauseRoute());
-              } else if (widget.team == 'team2') {
-                await router.replace(
-                  ResultRoute(
-                    team: widget.team,
-                    interstitialAd: widget.team == 'team2' ? interstitialAd : null,
-                  ),
-                );
-              }
-            },
+    return Padding(
+      padding: const EdgeInsets.only(top: 50.0),
+      child: TimerCountdown(
+        format: CountDownTimerFormat.secondsOnly,
+        colonsTextStyle: const TextStyle(color: Colors.black),
+        timeTextStyle: GoogleFonts.luckiestGuy(
+          fontSize: 34,
+        ),
+        descriptionTextStyle: const TextStyle(
+          fontSize: 0,
+        ),
+        endTime: DateTime.now().add(
+          const Duration(
+            //* duration *//
+            seconds: 6,
+            // seconds: 2,
           ),
-        );
-      },
+        ),
+        onEnd: () async {
+          if (widget.team == 'team1') {
+            await router.replace(const PauseRoute());
+          } else if (widget.team == 'team2') {
+            interstitialAd?.show();
+            await router.replace(
+              ResultRoute(
+                team: widget.team,
+                interstitialAd: widget.team == 'team2' ? interstitialAd : null,
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }
