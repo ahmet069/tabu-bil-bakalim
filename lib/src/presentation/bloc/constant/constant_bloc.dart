@@ -8,15 +8,11 @@ class ConstantBloc extends Bloc<ConstantEvent, ConstantState> {
   late int duration = 75;
   ConstantBloc() : super(ConstantInitial()) {
     on<ConstantEvent>((event, emit) {
-      emit(GameInitial(
-        duration: duration,
-      ));
+      emit(GameInitial(duration: duration));
     });
     on<ChangeDuration>((event, emit) {
       duration = event.newDuration;
-      emit(GameInitial(
-        duration: duration,
-      ));
+      emit(GameInitial(duration: duration));
     });
   }
 }
