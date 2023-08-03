@@ -65,7 +65,7 @@ DEPENDENCIES:
   - assets_audio_player_web (from `.symlinks/plugins/assets_audio_player_web/ios`)
   - Flutter (from `Flutter`)
   - google_mobile_ads (from `.symlinks/plugins/google_mobile_ads/ios`)
-  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - store_redirect (from `.symlinks/plugins/store_redirect/ios`)
 
 SPEC REPOS:
@@ -87,7 +87,7 @@ EXTERNAL SOURCES:
   google_mobile_ads:
     :path: ".symlinks/plugins/google_mobile_ads/ios"
   path_provider_foundation:
-    :path: ".symlinks/plugins/path_provider_foundation/ios"
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
   store_redirect:
     :path: ".symlinks/plugins/store_redirect/ios"
 
